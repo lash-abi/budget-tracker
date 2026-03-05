@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Budget Tracker</title>
+<link rel="stylesheet" href="budjet.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="welcomePopup" class="popup">
+  <div class="popup-content">
+    <h2>👋 Welcome</h2>
+    <p> ➤ Welcome to <strong>Abilash's </strong>Budget Tracker Website 💰</p>
+    <p> <i> ➤ Track your income and expences easily 🫶</i></p>
+    <button onclick="closePopup()">Start</button>
+  </div>
+</div>
+
+<div class="container">
+
+<h1>💰 Budget Tracker</h1>
+
+<div class="currency-box">
+<label>Currency</label>
+<select id="currency" onchange="changeCurrency()">
+<option value="₹">INR ₹</option>
+<option value="$">USD $</option>
+<option value="Rs">LKR Rs</option>
+</select>
+</div>
+
+<div class="summary">
+
+<div class="card income">
+<h3>Income</h3>
+<p><span class="symbol">₹</span><span id="income">0</span></p>
+</div>
+
+<div class="card expense">
+<h3>Expense</h3>
+<p><span class="symbol">₹</span><span id="expense">0</span></p>
+</div>
+
+<div class="card balance">
+<h3>Balance</h3>
+<p><span class="symbol">₹</span><span id="balance">0</span></p>
+</div>
+
+</div>
+
+<div class="form">
+
+<input type="text" id="desc" placeholder="Description">
+
+<input type="number" id="amount" placeholder="Amount">
+
+<select id="type">
+<option value="income">Income</option>
+<option value="expense">Expense</option>
+</select>
+
+<button onclick="addTransaction()">Add Transaction</button>
+
+</div>
+
+<h2>History</h2>
+
+<ul id="list"></ul>
+
+<footer>
+  <p>&copy; <span id="year"></span> Nadaraja Abilash | Smart Budget Tracker</p>
+</footer>
+
+</div>
+
+
+
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script src="budjet.js"></script>
+
+</body>
+</html>

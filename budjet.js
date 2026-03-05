@@ -1,0 +1,121 @@
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+let currency = "₹";
+
+function addTransaction(){
+
+let desc = document.getElementById("desc").value;
+let amount = parseFloat(document.getElementById("amount").value);
+let type = document.getElementById("type").value;
+
+if(desc=="" || isNaN(amount)){
+alert("Enter valid data");
+return;
+}
+
+let transaction = {
+
+desc:desc,
+amount:amount,
+type:type
+
+};
+
+transactions.push(transaction);
+
+saveData();
+showTransactions();
+
+document.getElementById("desc").value="";
+document.getElementById("amount").value="";
+
+}
+
+function showTransactions(){
+
+let list=document.getElementById("list");
+
+list.innerHTML="";
+
+let income=0;
+let expense=0;
+
+transactions.forEach((t,index)=>{
+
+let li=document.createElement("li");
+
+li.innerHTML=
+
+`${t.desc} : ${currency}${t.amount} (${t.type})
+<button class="delete" onclick="deleteTransaction(${index})">X</button>`;
+
+list.appendChild(li);
+
+if(t.type=="income"){
+income+=t.amount;
+}else{
+expense+=t.amount;
+}
+
+});
+
+let balance=income-expense;
+
+document.getElementById("income").innerText=income;
+document.getElementById("expense").innerText=expense;
+document.getElementById("balance").innerText=balance;
+
+let symbols=document.querySelectorAll(".symbol");
+
+symbols.forEach(s=>{
+s.innerText=currency;
+});
+
+}
+
+function deleteTransaction(index){
+
+transactions.splice(index,1);
+
+saveData();
+showTransactions();
+
+}
+
+function changeCurrency(){
+
+currency=document.getElementById("currency").value;
+
+showTransactions();
+
+}
+
+function saveData(){
+
+localStorage.setItem("transactions",JSON.stringify(transactions));
+
+}
+
+function changeCurrency(){
+
+currency = document.getElementById("currency").value;
+
+showTransactions();
+
+}
+window.onload = function() {
+  document.getElementById("welcomePopup").style.display = "flex";
+};
+
+function closePopup(){
+  document.getElementById("welcomePopup").style.display = "none";
+}
+
+
+
+    // SAVE DATA
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+
+    showTransactions();
+
+
+

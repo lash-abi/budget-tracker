@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2ecc71">
+    <link rel="icon" href="logo1.jpeg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abilash's Budget Tracker</title>
+<title>Smart Budget Tracker</title>
 <link rel="stylesheet" href="budjet.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +16,7 @@
 </head>
 
 <body>
+
 
     <div id="welcomePopup" class="popup">
   <div class="popup-content">
@@ -24,7 +29,10 @@
 
 <div class="container">
 
-<h1>💰 LashBudget</h1>
+<header class="site-header">
+    <img src="logo1.jpeg" alt="Lash Budget Tracker Logo" class="logo">
+    <h1>LashBudget</h1>
+</header>
 
 <div class="currency-box">
 <label>Currency</label>
@@ -56,6 +64,8 @@
 
 <div class="form">
 
+  <input type="date" id="date">
+
 <input type="text" id="desc" placeholder="Description">
 
 <input type="number" id="amount" placeholder="Amount">
@@ -69,26 +79,35 @@
 
 </div>
 
-<h2>History</h2>
+<h2><u>History</u></h2>
 
 <ul id="list"></ul>
 
+
+<br>
+
+<a href="https://forms.gle/hkEU4G2Mb5Qi5m156" target="_blank">Give Your support</a>
+<br><br>
+
+<hr>
 <footer>
   <p>&copy; <span id="year"></span> Nadaraja Abilash | Smart Budget Tracker</p>
 </footer>
 
+
 </div>
-
-
-
 
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+  .then(() => console.log("Service Worker Registered"));
+}
 </script>
 
 <script src="budjet.js"></script>
 
 </body>
-
 </html>
-

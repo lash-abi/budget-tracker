@@ -6,6 +6,7 @@ function addTransaction(){
 let desc = document.getElementById("desc").value;
 let amount = parseFloat(document.getElementById("amount").value);
 let type = document.getElementById("type").value;
+let date = document.getElementById("date").value;
 
 if(desc=="" || isNaN(amount)){
 alert("Enter valid data");
@@ -16,7 +17,8 @@ let transaction = {
 
 desc:desc,
 amount:amount,
-type:type
+type:type,
+date:date
 
 };
 
@@ -27,6 +29,7 @@ showTransactions();
 
 document.getElementById("desc").value="";
 document.getElementById("amount").value="";
+document.getElementById("date").value="";
 
 }
 
@@ -45,7 +48,10 @@ let li=document.createElement("li");
 
 li.innerHTML=
 
-`${t.desc} : ${currency}${t.amount} (${t.type})
+
+`${t.date} - ${t.desc} : ${currency}${t.amount} (${t.type})
+
+
 <button class="delete" onclick="deleteTransaction(${index})">X</button>`;
 
 list.appendChild(li);
